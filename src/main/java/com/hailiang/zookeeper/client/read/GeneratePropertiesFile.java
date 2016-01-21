@@ -1,4 +1,4 @@
-package com.hailiang.zookeeper.read;
+package com.hailiang.zookeeper.client.read;
 
 import java.io.File;
 import java.util.List;
