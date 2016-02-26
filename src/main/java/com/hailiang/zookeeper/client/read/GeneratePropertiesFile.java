@@ -1,6 +1,7 @@
 package com.hailiang.zookeeper.client.read;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.curator.framework.CuratorFramework;
@@ -27,6 +28,7 @@ public class GeneratePropertiesFile {
 				StringBuilder contentPropertiesSb = new StringBuilder();
 				if (numChildren > 0) {
 					List<String> keyList = newClient.getChildren().forPath("/" + key);
+					Collections.sort(keyList);
 					CuratorFramework cf = newClient.usingNamespace(newClient.getNamespace() + "/" + key);
 					for (String k : keyList) {
 						String lineStr = new KeyValue(k, new String(cf.getData().forPath("/" + k), "UTF-8")).getPair();
